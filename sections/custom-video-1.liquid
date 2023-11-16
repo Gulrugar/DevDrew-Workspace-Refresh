@@ -1,0 +1,190 @@
+{{ 'video-section.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign video_id = section.settings.video.id
+  assign poster = section.settings.video.preview_image
+-%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  .custom-video__overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    display: block;
+    position: absolute;
+    inset: 0;
+  }
+  /* ------------------------ */
+  /* section-image-banner.css */
+  /* ------------------------ */
+
+  /* div class="banner__content banner__content--bottom-center page-width */
+  .custom-video__overlay .banner__content {
+    padding: 0;
+    display: flex;
+    position: relative;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+
+    height: 100%;
+  }
+
+  @media screen and (min-width: 750px) {
+    .custom-video__overlay .banner__content {
+      padding: 5rem;
+    }
+
+    .custom-video__overlay .banner__content--bottom-center {
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .custom-video__overlay .banner__content.banner__content--bottom-center {
+      align-items: flex-end;
+      justify-content: center;
+    }
+  }
+  /* div class="banner__box content-container content-container--full-width-mobile */
+  .custom-video__overlay .banner__box {
+    padding: 4rem 3.5rem;
+    position: relative;
+    height: fit-content;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    word-wrap: break-word;
+    z-index: 1;
+
+    background: transparent;
+  }
+
+  @media screen and (min-width: 750px) {
+    .custom-video__overlay .banner__box {
+      width: auto;
+      max-width: 71rem;
+      min-width: 45rem;
+    }
+  }
+
+  /* h2 class="banner__heading inline-richtext h0" */
+  .custom-video__overlay .banner__heading {
+    margin-bottom: 0;
+  }
+
+  .custom-video__overlay .banner__box > *:first-child {
+    margin-top: 0;
+  }
+
+  /* div class="banner__text rte body" */
+
+  /* p */
+
+  /* div class="banner__buttons" */
+
+  /* a class="button button--secondary" */
+  .custom-video__overlay .button--secondary {
+    --alpha-button-background: 0;
+  }
+</style>
+
+  <div class="video-section isolate section-{{ section.id }}-padding">
+    <div
+      class="video-section__media deferred-media global-media-settings global-media-settings--full-width"
+      data-media-type="{{ video_id }}"
+      {% if poster != null %}
+        style="--ratio-percent: {{ 1 | divided_by: poster.aspect_ratio | times: 100 }}%;"
+      {% endif %}
+    >
+      <div class="custom-video__overlay">
+        <div class="banner__content banner__content--bottom-center page-width">
+          <div class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
+            <h2 class="banner__heading inline-richtext h0">Custom BG Video 1</h2>
+            <div class="banner__text rte body">
+              <p>Section height</p>
+            </div>
+            <div class="banner__buttons">
+              <a href="/" class="button button--secondary">Link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{
+        section.settings.video
+        | video_tag:
+          image_size: '1100x',
+          autoplay: true,
+          loop: true,
+          controls: false,
+          muted: true
+      }}
+    </div>
+  </div>
+
+
+{% schema %}
+  {
+    "name": "Custom video section",
+    "tag": "section",
+    "class": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "header",
+        "content": "Shopify-hosted video"
+      },
+      {
+        "type": "video",
+        "id": "video",
+        "label": "Video"
+      },
+      {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+      },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 36
+    }
+    ],
+    "presets": [
+      {
+        "name": "Custom Video"
+      }
+    ]
+  }
+{% endschema %}

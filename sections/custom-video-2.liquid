@@ -1,0 +1,148 @@
+{%- liquid
+  assign video_id = section.settings.video.id
+  assign poster = section.settings.video.preview_image
+-%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  .hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    background: rgba(0, 0, 0, 0.5);
+
+    min-height: 100vh;
+
+    overflow: hidden;
+  }
+
+  .hero video {
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1440px;
+    height: 810px;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  .hero .banner__box {
+    background: transparent;
+  }
+
+  .hero .button--secondary {
+    --alpha-button-background: 0;
+  }
+  
+
+  @media screen and (min-height: 810px) {
+    .hero video {
+      width: unset;
+      height: unset;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    .hero video {
+      width: unset;
+      height: unset;
+    }
+  }
+</style>
+
+  <div class="section-{{ section.id }}-padding">
+    <div
+      class="hero color-{{ section.settings.color_scheme }} gradient"
+    >
+      <div class="banner__content banner__content--bottom-center page-width">
+        <div class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
+          <h2 class="banner__heading inline-richtext h0">Custom BG Video 2</h2>
+          <div class="banner__text rte body">
+            <p>Screen height / Hero Banner</p>
+          </div>
+          <div class="banner__buttons">
+            <a href="/" class="button button--secondary">Link</a>
+          </div>
+        </div>
+      </div>
+        {{
+          section.settings.video
+          | video_tag:
+            image_size: '1100x',
+            autoplay: true,
+            loop: true,
+            controls: false,
+            muted: true
+        }}
+    </div>
+  </div>
+
+{% schema %}
+  {
+    "name": "Custom video section 2",
+    "tag": "section",
+    "class": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "header",
+        "content": "Shopify-hosted video"
+      },
+      {
+        "type": "video",
+        "id": "video",
+        "label": "Video"
+      },
+      {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+      },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 36
+    }
+    ],
+    "presets": [
+      {
+        "name": "Custom Video"
+      }
+    ]
+  }
+{% endschema %}
