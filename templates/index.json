@@ -68,31 +68,7 @@
     "video": {
       "type": "video",
       "block_order": []
-    },
-    "custom_video_1": {
-      "type": "custom-video-1",
-      "settings": {
-        "video": "shopify://files/videos/KV-Video-Optimized.mp4",
-        "color_scheme": "inverse"
-      },
-      "block_order": []
-    },
-    "custom_video_2": {
-      "type": "custom-video-2",
-      "settings": {
-        "video": "shopify://files/videos/KV-Video-Optimized.mp4",
-        "color_scheme": "inverse",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
     }
   },
-  "order": [
-    "custom_video_2",
-    "custom_video_1",
-    "slideshow",
-    "featured-collection-0",
-    "image_banner",
-    "video"
-  ]
+  "order": ["slideshow", "featured-collection-0", "image_banner", "video"]
 }
