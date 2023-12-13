@@ -154,7 +154,7 @@
     "sale_badge_color_scheme": "accent-1",
     "sold_out_badge_color_scheme": "background-1",
     "brand_headline": "",
-    "brand_description": "<p></p>",
+    "brand_description": "<p><\/p>",
     "brand_image_width": 100,
     "social_twitter_link": "",
     "social_facebook_link": "",
@@ -177,11 +177,15 @@
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
-        "settings": { "color_scheme": "inverse" }
+        "settings": {
+          "color_scheme": "inverse"
+        }
       },
       "main-password-footer": {
         "type": "main-password-footer",
-        "settings": { "color_scheme": "inverse" }
+        "settings": {
+          "color_scheme": "inverse"
+        }
       }
     }
   },
@@ -341,7 +345,7 @@
       "sale_badge_color_scheme": "accent-1",
       "sold_out_badge_color_scheme": "background-1",
       "brand_headline": "",
-      "brand_description": "<p></p>",
+      "brand_description": "<p><\/p>",
       "brand_image_width": 100,
       "social_twitter_link": "",
       "social_facebook_link": "",
@@ -364,11 +368,15 @@
       "sections": {
         "main-password-header": {
           "type": "main-password-header",
-          "settings": { "color_scheme": "inverse" }
+          "settings": {
+            "color_scheme": "inverse"
+          }
         },
         "main-password-footer": {
           "type": "main-password-footer",
-          "settings": { "color_scheme": "inverse" }
+          "settings": {
+            "color_scheme": "inverse"
+          }
         }
       }
     }
