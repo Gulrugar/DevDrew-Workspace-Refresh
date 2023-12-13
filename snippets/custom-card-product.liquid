@@ -35,6 +35,24 @@
       assign ratio = 1
     endif
   -%}
+  <style>
+    .badge-custom-wholesale {
+      font-weight: 500;
+      font-size: 1.09375rem;
+      line-height: 1.5625rem;
+      padding: .9375rem 1.25rem;
+      border-color: hsl(217.2 32.6% 17.5%);
+      border-width: 1px;
+      border-radius: 9999px;
+      white-space: nowrap;
+      justify-content: center;
+      align-items: center;
+      height: 3.125rem;
+      display: inline-flex;
+      margin-bottom: 0.5rem;
+    }
+  
+  </style>
   <div class="card-wrapper product-card-wrapper underline-links-hover">
     <div
       class="
@@ -124,7 +142,7 @@
               {% if card_product.tags contains "wholesale" %}
                 <span
                   id="NoMediaStandardBadge-custom-wholesale-{{ section_id }}-{{ card_product.id }}"
-                  class="badge badge--bottom-left"
+                  class="badge-custom-wholesale badge--bottom-left"
                   style="color: #0e1b4d; background-color: lime;"
                 >
                   Wholesale
