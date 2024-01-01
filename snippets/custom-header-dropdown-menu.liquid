@@ -6,7 +6,7 @@
 {% endcomment %}
 
 <style>
-  .text-lime {
+  #HeaderMenu-wholesale {
     color: lime;
   }
 </style>
@@ -23,7 +23,9 @@
                   id="HeaderMenu-{{ link.handle }}"
                   class="header__menu-item list-menu__item link focus-inset">
                   <span
-                      class="{%- if link.current %}header__active-menu-item {% endif %}{% if link.object.metafields.custom.is_wholesale_collection %}text-lime{% endif %}"
+                    {%- if link.current %}
+                      class="header__active-menu-item"
+                    {% endif %}
                   >
                     {{- link.title | escape -}}
                   </span>
@@ -95,7 +97,9 @@
               {% endif %}
             >
               <span
-                class="{%- if link.current %}header__active-menu-item {% endif %}{% if link.object.metafields.custom.is_wholesale_collection %}text-lime{% endif %}"
+                {%- if link.current %}
+                  class="header__active-menu-item"
+                {% endif %}
               >
                 {{- link.title | escape -}}
               </span>
