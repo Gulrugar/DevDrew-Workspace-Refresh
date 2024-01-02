@@ -10,7 +10,7 @@
             "heading_size": "h1",
             "subheading": "",
             "button_label": "Shop all",
-            "link": "shopify://collections/all",
+            "link": "shopify:\/\/collections\/all",
             "button_style_secondary": false,
             "box_align": "middle-left",
             "show_text_box": true,
@@ -21,7 +21,9 @@
           }
         }
       },
-      "block_order": ["slide-0"],
+      "block_order": [
+        "slide-0"
+      ],
       "settings": {
         "layout": "full_bleed",
         "slide_height": "adapt_image",
@@ -63,12 +65,19 @@
     },
     "image_banner": {
       "type": "image-banner",
-      "block_order": []
+      "settings": {
+      }
     },
     "video": {
       "type": "video",
-      "block_order": []
+      "settings": {
+      }
     }
   },
-  "order": ["slideshow", "featured-collection-0", "image_banner", "video"]
+  "order": [
+    "slideshow",
+    "featured-collection-0",
+    "image_banner",
+    "video"
+  ]
 }

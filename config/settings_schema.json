@@ -1465,5 +1465,16 @@
         "default": "background-1"
       }
     ]
+  },
+  {
+    "name": "Custom",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_prices",
+        "label": "Show prices",
+        "default": false
+      }
+    ]
   }
 ]
